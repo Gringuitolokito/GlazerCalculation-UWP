@@ -13,18 +13,81 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace GlazerCalculation
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {
+    {       
+
         public MainPage()
         {
             this.InitializeComponent();
+            //populate tintcolor com-box 
+            var tintColor = new List<MainPage.TintColor>();
+            tintColor = Enum.GetValues(typeof(MainPage.TintColor))
+                .Cast<MainPage.TintColor>()
+                .ToList();
+            cbTintColor.ItemsSource = tintColor;
+
+
+            //foreach (var item in cbTintColor.Items) { 
+            //    var comboBoxItem = (ComboBoxItem)item;
+            //    //comboBoxItem.Background = ???
+            //    comboBoxItem.Background = new SolidColorBrush();
+            //}
+
+            //set it to none
+            cbTintColor.SelectedIndex = -1;
+
+        }
+        public enum TintColor
+        {
+            Black,
+            Blue,
+            Brown
+        }
+        public TintColor SelectedTintColor { get; set; }
+
+        private void Quantity_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            //Slider slider = sender as Slider;
+            //if (slider != null)
+            //{
+            //     = slider.Value;
+            //}
+        }
+
+        private void TintColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var comboBox = (ComboBox)sender;
+            //var selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+            //selectedItem.Background electedItem.Content.ToString();
+
+            //cbTintColor.Opacity = SelectedTintColor;
+        }
+
+        private void Calculate_Btn(object sender, RoutedEventArgs e)
+        {
+            double width = Convert.ToDouble(tbWidthString.Text);
+            double height = Convert.ToDouble(tbHeightString.Text);
+
+            double woodLength = 2 * (width + height) * 3.25;
+
+            wl.Text = "The length of the wood is " + woodLength.ToString() + " feet";
+
+            double glassArea = 2 * (width * height);
+
+            ga.Text = "The area of the glass is " + glassArea.ToString() + " square metres";
+
+            tbWidthString.IsEnabled = false;
+            tbHeightString.IsEnabled = false;
+            cbTintColor.IsEnabled = false;
+            qSlider.IsEnabled = false;
+            wl.IsReadOnly = true;
+            ga.IsReadOnly = true;
+            CalcBtn.Visibility = Visibility.Collapsed;
         }
     }
 }
