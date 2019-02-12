@@ -18,8 +18,11 @@
         <TextBlock x:Name="tintColorText" HorizontalAlignment="Left" Text="Tint Color:" TextWrapping="Wrap" VerticalAlignment="Top" Margin="261,188,0,0" FontSize="18"/>
         <Slider x:Name="qSlider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Margin="386,252,0,0" ValueChanged="Quantity_ValueChanged"/>
         <TextBlock HorizontalAlignment="Left" Text="Quantity Needed:" TextWrapping="Wrap" VerticalAlignment="Top" Margin="201,256,0,0" FontSize="18"/>
-        <TextBox x:Name="wl" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="575,117,0,0" FontSize="18" Width="400"/>
-        <TextBox x:Name="ga" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Margin="575,200,0,0" Width="400" FontSize="18"/>
+        <Button x:Name="ResetBtn" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,411,0,0" Width="187" FontSize="18" Visibility="Collapsed" Click="ResetBtn_Click"/>
+        <TextBlock x:Name="tbSliderValue" HorizontalAlignment="Left" Text="..." TextWrapping="Wrap" VerticalAlignment="Top" Margin="526,256,0,0" FontSize="18"/>
+        <Viewbox HorizontalAlignment="Left" Height="100" Margin="567,320,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="wl" HorizontalAlignment="Left" Text="..." TextWrapping="Wrap" VerticalAlignment="Top" Margin="575,52,0,0" Width="400" FontSize="18" Height="35"/>
+        <TextBlock x:Name="ga" HorizontalAlignment="Left" Text="..." TextWrapping="Wrap" VerticalAlignment="Top" Margin="575,128,0,0" Width="400" FontSize="18" Height="35"/>
 
     </Grid>
 </Page>

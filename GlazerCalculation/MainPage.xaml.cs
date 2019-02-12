@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,19 +25,20 @@ namespace GlazerCalculation
         public MainPage()
         {
             this.InitializeComponent();
+
             //populate tintcolor com-box 
             var tintColor = new List<MainPage.TintColor>();
             tintColor = Enum.GetValues(typeof(MainPage.TintColor))
                 .Cast<MainPage.TintColor>()
                 .ToList();
             cbTintColor.ItemsSource = tintColor;
-
-
-            //foreach (var item in cbTintColor.Items) { 
-            //    var comboBoxItem = (ComboBoxItem)item;
-            //    //comboBoxItem.Background = ???
-            //    comboBoxItem.Background = new SolidColorBrush();
+                         
+            //foreach (var item in cbTintColor.Items) {                 
+              //  var comboBoxItem = (ComboBoxItem)item;
+                //comboBoxItem.Background = Color;
+                //comboBoxItem.Background = new SolidColorBrush();
             //}
+
 
             //set it to none
             cbTintColor.SelectedIndex = -1;
@@ -52,20 +54,20 @@ namespace GlazerCalculation
 
         private void Quantity_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            //Slider slider = sender as Slider;
-            //if (slider != null)
-            //{
-            //     = slider.Value;
-            //}
+            Slider slider = sender as Slider;
+            if (slider != null)
+            {
+                tbSliderValue.Text = slider.Value.ToString();
+            }
         }
 
         private void TintColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //var comboBox = (ComboBox)sender;
             //var selectedItem = (ComboBoxItem)comboBox.SelectedItem;
-            //selectedItem.Background electedItem.Content.ToString();
+            //selectedItem.Background electedItem.Content.ToString();            
+            //cbTintColor.Opacity = SelectedTintColor;           
 
-            //cbTintColor.Opacity = SelectedTintColor;
         }
 
         private void Calculate_Btn(object sender, RoutedEventArgs e)
@@ -85,9 +87,28 @@ namespace GlazerCalculation
             tbHeightString.IsEnabled = false;
             cbTintColor.IsEnabled = false;
             qSlider.IsEnabled = false;
-            wl.IsReadOnly = true;
-            ga.IsReadOnly = true;
+            //wl.IsReadOnly = true;
+            //ga.IsReadOnly = true;
             CalcBtn.Visibility = Visibility.Collapsed;
+            ResetBtn.Visibility = Visibility.Visible;
+        }
+
+        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            tbWidthString.Text = String.Empty;
+            tbHeightString.Text = String.Empty;
+            wl.Text = "...";
+            ga.Text = "...";
+            cbTintColor.SelectedIndex = -1;
+            tbWidthString.IsEnabled = true;
+            tbHeightString.IsEnabled = true;
+            cbTintColor.IsEnabled = true;
+            qSlider.IsEnabled = true;
+            qSlider.Value = 0;
+            tbSliderValue.Text = "...";
+            CalcBtn.Visibility = Visibility.Visible;
+            ResetBtn.Visibility = Visibility.Collapsed;
+
         }
     }
 }
