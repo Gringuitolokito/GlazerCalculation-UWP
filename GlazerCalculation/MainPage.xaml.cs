@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -42,14 +43,15 @@ namespace GlazerCalculation
 
             //set it to none
             cbTintColor.SelectedIndex = -1;
-
         }
+
         public enum TintColor
         {
             Black,
             Blue,
             Brown
         }
+
         public TintColor SelectedTintColor { get; set; }
 
         private void Quantity_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -112,6 +114,36 @@ namespace GlazerCalculation
             CalcBtn.Visibility = Visibility.Visible;
             ResetBtn.Visibility = Visibility.Collapsed;
 
+        }
+
+        private async void ErrPopUp(String message)
+        {
+            var messageDialog = new MessageDialog(message);
+            await messageDialog.ShowAsync();
+        }
+
+        private void Width_Validation(object sender, TextChangedEventArgs e)
+        {
+            var widthTextBox = sender as TextBox;
+            
+            if (int.TryParse(widthTextBox.Text, out int WidthInput) == false && widthTextBox.Text.Length != 0)
+            {
+                ErrPopUp("Please enter a number.");
+                widthTextBox.Text = String.Empty;             
+            }
+
+        }
+
+        private void Height_Validation(object sender, TextChangedEventArgs e)
+        {
+            var heightTextBox = sender as TextBox;
+           
+            if (int.TryParse(heightTextBox.Text, out int WidthInput) == false && heightTextBox.Text.Length != 0)
+            {
+                ErrPopUp("Please enter a number.");
+                heightTextBox.Text = String.Empty;
+                
+            }
         }
     }
 }

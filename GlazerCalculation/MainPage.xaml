@@ -10,9 +10,9 @@
 
     <Grid>
         <TextBlock x:Name="widthText" HorizontalAlignment="Left" Margin="60,60,0,0" Text="Enter Width Of Window (in inches):" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbWidthString" HorizontalAlignment="Left" Margin="386,54,0,0" Text="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" VerticalAlignment="Top" FontSize="16" Width="126"/>
+        <TextBox x:Name="tbWidthString" HorizontalAlignment="Left" Margin="386,54,0,0" Text="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" VerticalAlignment="Top" FontSize="16" Width="126" TextChanged="Width_Validation"/>
         <TextBlock x:Name="heightText" HorizontalAlignment="Left" Margin="55,123,0,0" Text="Enter Height Of Window (in inches):" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbHeightString" HorizontalAlignment="Left" Margin="386,118,0,0" Text="" VerticalAlignment="Top" FontSize="16" Width="126"/>
+        <TextBox x:Name="tbHeightString" HorizontalAlignment="Left" Margin="386,118,0,0" Text="" VerticalAlignment="Top" FontSize="16" Width="126" TextChanged="Height_Validation"/>
         <Button x:Name="CalcBtn" Content="Calculate" HorizontalAlignment="Center" Margin="0,411,0,0" VerticalAlignment="Top" Height="38" Width="188" FontSize="18" RenderTransformOrigin="0.411,1.695" Click="Calculate_Btn"/>
         <ComboBox x:Name="cbTintColor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,184,0,0" Width="126" IsDropDownOpen="True" SelectionChanged="TintColor_SelectionChanged"/>
         <TextBlock x:Name="tintColorText" HorizontalAlignment="Left" Text="Tint Color:" TextWrapping="Wrap" VerticalAlignment="Top" Margin="261,188,0,0" FontSize="18"/>
