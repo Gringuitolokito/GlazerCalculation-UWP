@@ -72,6 +72,8 @@ namespace GlazerCalculation
 
         private void Calculate_Btn(object sender, RoutedEventArgs e)
         {
+            TimeStamp.Text = DateTime.Now.ToString("MMMM dd yyyy");
+
             double width = Convert.ToDouble(tbWidthString.Text);
             double height = Convert.ToDouble(tbHeightString.Text);
 
@@ -95,6 +97,7 @@ namespace GlazerCalculation
 
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
+            TimeStamp.Text = "...";
             tbWidthString.Text = String.Empty;
             tbHeightString.Text = String.Empty;
             wl.Text = "...";
