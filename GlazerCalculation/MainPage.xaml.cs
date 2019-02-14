@@ -79,20 +79,18 @@ namespace GlazerCalculation
             double width = Convert.ToDouble(tbWidthString.Text);
             double height = Convert.ToDouble(tbHeightString.Text);
 
-            double woodLength = 2 * (width + height) * 3.25;
+            double woodLength = (2 * (width + height) * 3.25) * Convert.ToDouble(tbSliderValue.Text);
 
             wl.Text = "The length of the wood is " + woodLength.ToString() + " feet";
 
-            double glassArea = 2 * (width * height);
+            double glassArea = (2 * (width * height)) * Convert.ToDouble(tbSliderValue.Text);
 
             ga.Text = "The area of the glass is " + glassArea.ToString() + " square metres";
 
             tbWidthString.IsEnabled = false;
             tbHeightString.IsEnabled = false;
             cbTintColor.IsEnabled = false;
-            qSlider.IsEnabled = false;
-            //wl.IsReadOnly = true;
-            //ga.IsReadOnly = true;
+            qSlider.IsEnabled = false;           
             CalcBtn.Visibility = Visibility.Collapsed;
             ResetBtn.Visibility = Visibility.Visible;
         }
